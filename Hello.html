@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Manipulation</title>
+    <style>
+      body {
+        height: 100vh;
+        width: 100%;
+        background-color: azure;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+      }
+      .my-form {
+        padding: 1rem;
+        border-radius: 5%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 250px;
+        background-color: #61677a;
+        color: #eeeded;
+        margin: 0 auto;
+      }
+      input {
+        padding: 5px 10px;
+        border: none;
+        outline: none;
+      }
+      h1 {
+        text-align: center;
+      }
+      .items {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="my-form">
+      <h1>Add User</h1>
+      <label for="username">Username</label>
+      <input type="text" name="username" />
+      <label for="email">Email</label>
+      <input type="email" name="email" />
+      <button type="submit" class="button">Submit</button>
+    </form>
+    <ul class="items">
+      <li class="item">Item 1</li>
+      <li class="item">Item 2</li>
+      <li class="item">Item 3</li>
+    </ul>
+    <script>
+      const ul = document.querySelector(".items");
+      ul.firstElementChild.textContent = "Hello";
+      ul.firstElementChild.style.background = "red";
+      ul.children[1].style.background = "yellow";
+
+      const button = document.querySelector(".button");
+      const body = document.querySelector("body");
+      const form = document.querySelector(".my-form");
+
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        form.style.background = "black";
+
+        const nameInput = form.querySelector('input[name="username"]');
+        const emailInput = form.querySelector('input[name="email"]');
+
+        const name = nameInput.value;
+        const email = emailInput.value;
+        if (name !== "" && email !== "") {
+          console.log(name, email);
+        }
+      });
+
+      ul.firstElementChild.addEventListener("mouseover", () => {
+        body.style.background = "grey";
+      });
+
+      ul.children[1].addEventListener("mouseout", () => {
+        body.style.background = "azure";
+      });
+    </script>
+  </body>
+</html>
